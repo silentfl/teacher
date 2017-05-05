@@ -1,24 +1,15 @@
-# README
+## Вводная
+Необходимо сделать назначение программ обучения: администратор назначает группе пользователей и/или конкретным пользователям курсы и/или тесты, а они их проходят.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Описание
+Для для реализации задачи сделаны три модели: Course (курс обучения), User (Пользователь) и Exercise (Задание). User сделан через devise, роли пользователей реализованы через rolify (пользователям можно назначать несколько ролей одновременно). Назначение пользователям курсов или тестов реализуется через создание записей в модели Exercise, с полями user (на какого пользователя назначено задание) и task (какое задание). Также есть поле status, которое позволяет отследить текущий статус задания.
 
-Things you may want to cover:
+## Дальнейшая разработка
+* Добавить тесты
+* Реализовать контроллеры
+* Внедрить в контроллеры уровни доступа (через current_user.is_student?, current_user.is_teacher? и пр.)
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Возможные варианты развития
+* Добавить модель UsersGroup для более гибкого управления группами (и соответственно, поменять Exercise.user на polymorphic-связь)
+* Заменить в Exercise task на tasks, чтобы можно было в упражнение назначать список заданий и отслеживать их как единое целое
+* Добавить модель Test (для тестовых заданий) (и поменять Exercise.task на polymorphic-связь)
